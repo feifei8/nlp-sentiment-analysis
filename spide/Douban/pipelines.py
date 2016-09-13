@@ -52,7 +52,9 @@ class DoubanPipeline(object):
         comment_content = item['comment_content']
         comment_grade = item['comment_grade']
         for i in range(len(comment_grade)):
-            line = comment_grade[i] + ' ' + ''.join(comment_content[i].split()).replace('\n', ';') + '\n'
-            # print line
-            self.file.write(line)
+            content = ''.join(comment_content[i].split()).replace('\n', ';')
+            if content.strip() != '':
+                line = comment_grade[i] + ' ' + content + '\n'
+                # print line
+                self.file.write(line)
         return item
