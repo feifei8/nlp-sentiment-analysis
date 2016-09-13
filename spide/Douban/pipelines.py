@@ -53,15 +53,15 @@ class DoubanPipeline(object):
         comment_grade = item['comment_grade']
         for i in range(len(comment_grade)):
             if comment_grade[i] == '力荐':
-                grade = 5
+                grade = '5'
             elif comment_grade[i] == '推荐':
-                grade = 4
+                grade = '4'
             elif comment_grade[i] == '还行':
-                grade = 3
+                grade = '3'
             elif comment_grade[i] == '较差':
-                grade = 2
+                grade = '2'
             else:
-                grade = 1
+                grade = '1'
             content = ''.join(comment_content[i].split()).replace('\n', ';')
             if content.strip() != '':
                 line = grade + ' ' + content + '\n'
