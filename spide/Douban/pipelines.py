@@ -49,5 +49,10 @@ class DoubanPipeline(object):
         self.file = codecs.open(path, mode='wb', encoding='utf-8')
 
     def process_item(self, item, spider):
-        # self.file.write(line)
+        comment_content = item['comment_content']
+        comment_grade = item['comment_grade']
+        for i in range(len(comment_grade)):
+            line = comment_grade[i] + ' ' + ''.join(comment_content[i].split()).replace('\n', ';') + '\n'
+            # print line
+            self.file.write(line)
         return item

@@ -41,17 +41,17 @@ class DoubanSpyder(BaseSpider):
         # tmp = str(tmp_keyword[0]).split(' ')
         # keyword = tmp[1]
         movie_link = hxs.xpath('//*[@id="content"]/div/div/div/table/tr/td/a/@href').extract()
-        for item in movie_link:
-            yield Request(item, meta={'keyword': ''}, callback=self.parse_article,
-                          cookies=[{'name': 'COOKIE_NAME', 'value': 'VALUE', 'domain': '.douban.com', 'path': '/'}, ])
+        # for item in movie_link:
+        item = movie_link[0]
+        yield Request(item, meta={'keyword': ''}, callback=self.parse_article,
+                      cookies=[{'name': 'COOKIE_NAME', 'value': 'VALUE', 'domain': '.douban.com', 'path': '/'}, ])
 
     # 电影详情页
     def parse_article(self, response):
         hxs = Selector(response)
-        comment_link = hxs.xpath('//div[@id="comments-section"]/div/h2/span/a/@href').extract()
-        for item in comment_link:
-            yield Request(item, meta={'item': item}, callback=self.parse_item, cookies=[
-                {'name': 'COOKIE_NAME', 'value': 'VALUE', 'domain': '.douban.com', 'path': '/'}, ])
+        comment_link = hxs.xpath('//div[@id="comments-section"]/div/h2/span/a/@href').extract()[0]
+        yield Request(comment_link, meta={'item': comment_link}, callback=self.parse_item,
+                      cookies=[{'name': 'COOKIE_NAME', 'value': 'VALUE', 'domain': '.douban.com', 'path': '/'}, ])
 
     # 电影评论页
     def parse_item(self, response):
@@ -64,7 +64,7 @@ class DoubanSpyder(BaseSpider):
         item['comment_content'] = comment_content
         item['comment_grade'] = comment_grade
         yield item
-
+        # 后页
         next_page = '//div[@id="paginator"]/a[@class="next"]/@href'
         if hxs.xpath(next_page):
             url_nextpage = comment_link + hxs.xpath(next_page).extract()[0]
