@@ -24,7 +24,7 @@ if __name__ == "__main__":
     sc = SparkContext(conf=conf)
 
     # 导入文件
-    originData = sc.textFile('hdfs:///tmp/text_cluster.txt')
+    originData = sc.textFile('hdfs:///tmp/output.txt')
 
     # 数据预处理
     originData = sc.textFile('YOUR_FILE_PATH')
