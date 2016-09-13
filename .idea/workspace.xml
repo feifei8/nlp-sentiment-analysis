@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55d35208-5a16-4e63-ab72-ec4bc379fa49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensitive.py" afterPath="$PROJECT_DIR$/sensitive.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spide/.idea/workspace.xml" afterPath="$PROJECT_DIR$/spide/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="55d35208-5a16-4e63-ab72-ec4bc379fa49" name="Default" comment="" />
     <ignored path="nlp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
