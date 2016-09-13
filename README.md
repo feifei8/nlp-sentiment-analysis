@@ -1,5 +1,5 @@
 # nlp
-用scrapy爬取豆瓣电影影评，再jieba/THULAC分词，计算TF-IDF，进行情感分析
+用scrapy爬取豆瓣电影影评，再jieba/THULAC分词，计算TF-IDF，训练分类器，进行情感分析
 
 ```
 cd spide
