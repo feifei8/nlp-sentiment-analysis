@@ -45,7 +45,7 @@ class DoubanPipeline(object):
     #     return item
     def __init__(self):
         # self.file = codecs.open('data.dat',mode='wb',encoding='utf-8')
-        path = os.getcwd() + 'output.txt'
+        path = os.getcwd() + '/output.txt'
         self.file = codecs.open(path, mode='wb', encoding='utf-8')
 
     def process_item(self, item, spider):
