@@ -27,7 +27,6 @@ if __name__ == "__main__":
     originData = sc.textFile('hdfs:///tmp/output.txt')
 
     # 数据预处理
-    originData = sc.textFile('YOUR_FILE_PATH')
     originDistinctData = originData.distinct()
     rateDocument = originDistinctData.map(lambda line: line.split('\t')).filter(lambda line: len(line) == 2)
 
