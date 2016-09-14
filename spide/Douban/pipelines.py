@@ -64,7 +64,7 @@ class DoubanPipeline(object):
                 grade = '1'
             content = ''.join(comment_content[i].split()).replace('\n', ';')
             if content.strip() != '':
-                line = grade + ' ' + content + '\n'
+                line = grade + '\t' + content + '\n'
                 # print line
                 self.file.write(line)
         return item

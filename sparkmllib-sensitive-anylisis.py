@@ -25,22 +25,24 @@ if __name__ == "__main__":
 
     # 导入文件
     originData = sc.textFile('hdfs:///tmp/output.txt')
+    print originData.count()
 
     # 数据预处理
-    originDistinctData = originData.distinct()
-    rateDocument = originDistinctData.map(lambda line: line.split('\t')).filter(lambda line: len(line) == 2)
+    #     originDistinctData = originData.distinct()
+    rateDocument = originData.map(lambda line: line.split('\t')).filter(lambda line: len(line) >= 2)
+    print rateDocument.count()
 
     # 统计打分情况
     fiveRateDocument = rateDocument.filter(lambda line: int(line[0]) == 5)
-    fiveRateDocument.count()
-    fourRateDocument = rateDocument.filter(lambda line: int(line[0]) == 5)
-    fourRateDocument.count()
-    threeRateDocument = rateDocument.filter(lambda line: int(line[0]) == 5)
-    threeRateDocument.count()
-    twoRateDocument = rateDocument.filter(lambda line: int(line[0]) == 5)
-    twoRateDocument.count()
-    oneRateDocument = rateDocument.filter(lambda line: int(line[0]) == 5)
-    oneRateDocument.count()
+    print fiveRateDocument.count()
+    fourRateDocument = rateDocument.filter(lambda line: int(line[0]) == 4)
+    print fourRateDocument.count()
+    threeRateDocument = rateDocument.filter(lambda line: int(line[0]) == 3)
+    print threeRateDocument.count()
+    twoRateDocument = rateDocument.filter(lambda line: int(line[0]) == 2)
+    print twoRateDocument.count()
+    oneRateDocument = rateDocument.filter(lambda line: int(line[0]) == 1)
+    print oneRateDocument.count()
 
     # 生成训练数据
     negRateDocument = oneRateDocument.union(twoRateDocument).union(threeRateDocument)
@@ -48,7 +50,7 @@ if __name__ == "__main__":
     posRateDocument = sc.parallelize(fiveRateDocument.take(negRateDocument.count())).repartition(1)
     allRateDocument = negRateDocument.union(posRateDocument)
     allRateDocument.repartition(1)
-    # rate = allRateDocument.map(lambda s: ReduceRate(s[0]))
+    rate = allRateDocument.map(lambda s: ReduceRate(s[0]))
     document = allRateDocument.map(lambda s: s[1])
 
     # 分词
