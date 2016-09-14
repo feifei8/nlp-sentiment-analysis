@@ -37,9 +37,6 @@ class DoubanSpyder(BaseSpider):
     # 解析搜索结果
     def parse(self, response):
         hxs = Selector(response)
-        # tmp_keyword = hxs.xpath('//div[@class="mb40"]/div/p/a/text()').extract()
-        # tmp = str(tmp_keyword[0]).split(' ')
-        # keyword = tmp[1]
         movie_link = hxs.xpath('//*[@id="content"]/div/div/div/table/tr/td/a/@href').extract()
         # for item in movie_link:
         item = movie_link[0]
@@ -49,18 +46,22 @@ class DoubanSpyder(BaseSpider):
     # 电影详情页
     def parse_article(self, response):
         hxs = Selector(response)
+        movie_name = hxs.xpath('//*[@id="content"]/h1/span[1]/text()').extract()
         comment_link = hxs.xpath('//div[@id="comments-section"]/div/h2/span/a/@href').extract()[0]
-        yield Request(comment_link, meta={'item': comment_link}, callback=self.parse_item,
+        item = DoubanItem()
+        item['movie_name'] = movie_name
+        item['comment_link'] = comment_link
+        yield Request(comment_link, meta={'item': item}, callback=self.parse_item,
                       cookies=[{'name': 'COOKIE_NAME', 'value': 'VALUE', 'domain': '.douban.com', 'path': '/'}, ])
 
     # 电影评论页
     def parse_item(self, response):
         hxs = Selector(response)
-        comment_link = response.meta['item']
+        item = response.meta['item']
+        comment_link = item['comment_link']
         comment_content = hxs.xpath('//div[@class="comment-item"]/div[@class="comment"]/p/text()').extract()
         comment_grade = hxs.xpath(
             '//div[@class="comment-item"]/div[@class="comment"]/h3/span/span[contains(@class, "rating")]/@title').extract()
-        item = DoubanItem()
         item['comment_content'] = comment_content
         item['comment_grade'] = comment_grade
         yield item
@@ -68,5 +69,6 @@ class DoubanSpyder(BaseSpider):
         next_page = '//div[@id="paginator"]/a[@class="next"]/@href'
         if hxs.xpath(next_page):
             url_nextpage = comment_link + hxs.xpath(next_page).extract()[0]
-            yield Request(url_nextpage, meta={'item': url_nextpage}, callback=self.parse_item, cookies=[
+            item['comment_link'] = url_nextpage
+            yield Request(url_nextpage, meta={'item': item}, callback=self.parse_item, cookies=[
                 {'name': 'COOKIE_NAME', 'value': 'VALUE', 'domain': '.douban.com', 'path': '/'}, ])

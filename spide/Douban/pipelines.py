@@ -45,10 +45,13 @@ class DoubanPipeline(object):
     #     return item
     def __init__(self):
         # self.file = codecs.open('data.dat',mode='wb',encoding='utf-8')
-        path = os.getcwd() + '/output.txt'
-        self.file = codecs.open(path, mode='wb', encoding='utf-8')
+        self.path = os.getcwd() + '/output'
+        if not os.path.isdir(self.path):
+            os.mkdir(self.path)
 
     def process_item(self, item, spider):
+        file = self.path + '/' + ''.join(item['movie_name']) + '.txt'
+        f = codecs.open(file, mode='a', encoding='utf-8')
         comment_content = item['comment_content']
         comment_grade = item['comment_grade']
         for i in range(len(comment_grade)):
@@ -66,5 +69,6 @@ class DoubanPipeline(object):
             if content.strip() != '':
                 line = grade + '\t' + content + '\n'
                 # print line
-                self.file.write(line)
+                f.write(line)
+        f.close()
         return item

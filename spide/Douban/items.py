@@ -15,5 +15,7 @@ if sys.getdefaultencoding() != default_encoding:
 class DoubanItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    movie_name = scrapy.Field()
+    comment_link = scrapy.Field()
     comment_content = scrapy.Field()
     comment_grade = scrapy.Field()
