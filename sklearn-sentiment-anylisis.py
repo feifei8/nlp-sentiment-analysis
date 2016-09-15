@@ -9,10 +9,9 @@ from sklearn import metrics
 
 dataset_dir_name = os.getcwd() + '/txt_sentoken'
 
-print dataset_dir_name
-
 # load data,and split into training/test set
 movie_reviews = load_files(dataset_dir_name)
+
 # split
 doc_terms_train, doc_terms_test, doc_class_train, doc_class_test = train_test_split(
     movie_reviews.data, movie_reviews.target, test_size=0.2, random_state=None)
@@ -29,8 +28,7 @@ parameters = {
 }
 grid_search = GridSearchCV(pipeline, parameters, n_jobs=-1)
 grid_search.fit(doc_terms_train, doc_class_train)
-
-print grid_search.grid_scores_
+# print grid_search.grid_scores_
 
 # y_predicted
 y_predicted = grid_search.predict(doc_terms_test)
@@ -40,5 +38,5 @@ print metrics.classification_report(
     doc_class_test, y_predicted, target_names=movie_reviews.target_names)
 
 # confusion matrix
-confusion_matrix = metrics.confusion_matrix(doc_class_test, y_predicted)
-print confusion_matrix
+# confusion_matrix = metrics.confusion_matrix(doc_class_test, y_predicted)
+# print confusion_matrix
