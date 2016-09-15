@@ -1,48 +1,33 @@
 # encoding=utf-8
+__author__ = 'zhourunlai'
 
 # 导入数据
-import numpy as np
+import pandas as pd
+import jieba
+from sklearn import feature_extraction
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import CountVectorizer
 
 path = u'spide/output/疯狂动物城 Zootopia.txt'
-data = np.loadtxt(path, delimiter='\t', dtype=np.str)
+data = pd.read_csv(path, sep='\t', header=None)
 
-# 打乱
-from random import shuffle
+text = data[1]
+tag = data[0]
 
-shuffle(data)
+text_new = []
+for i in text:
+    seg_list = jieba.cut(i.strip())
+    text_new.append(' '.join(seg_list))
+# print text_new
 
-# 生成训练集和测试集
-development = data[:900, :]
-test = data[900:, :]
-train = development[:, 1:]
-tag = development[:, 0].astype(np.float)
+vectorizer = CountVectorizer()
+transformer = TfidfTransformer()
 
-# 分类
-import sklearn
-from sklearn import svm
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import GaussianNB
-
-svc = svm.SVC(gamma=0.001, C=100.)
-
-lr = LogisticRegression(penalty='l1', tol=0.01)
-
-gnb = GaussianNB()
-
-# 交叉验证
-from sklearn import cross_validation
-
-kfold = cross_validation.KFold(len(development), n_folds=10)
-
-# 精确度
-svc_accuracy = cross_validation.cross_val_score(svc, train, tag, cv=kfold)
-
-lr_accuracy = cross_validation.cross_val_score(lr, train, tag, cv=kfold)
-
-gnb_accuracy = cross_validation.cross_val_score(gnb, train, tag, cv=kfold)
-
-print 'SVM average accuary: %f' % svc_accuracy.mean()
-
-print 'LogisticRegression average accuary: %f' % lr_accuracy.mean()
-
-print 'Naive Bayes average accuary: %f' % gnb_accuracy.mean()
+tf = vectorizer.fit_transform(text_new)
+tfidf = transformer.fit_transform(tf)
+word = vectorizer.get_feature_names()
+weight = tfidf.toarray()
+# for i in range(len(weight)):
+#     for j in range(len(word)):
+#         print word[j], weight[i][j]
+print weight
