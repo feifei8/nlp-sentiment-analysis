@@ -4,7 +4,7 @@ import pandas as pd
 import jieba
 import numpy
 from sklearn.cross_validation import train_test_split
-from sklearn.feature_extraction.text import HashingVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
 
@@ -24,9 +24,9 @@ print "训练集数目：%d; 测试集数目：%d" % (len(train_words), len(test
 
 # 分词
 comma_tokenizer = lambda x: jieba.cut(x, cut_all=True)
-vectorizer = HashingVectorizer(tokenizer=comma_tokenizer, n_features=30000, non_negative=True, decode_error='ignore')
+vectorizer = TfidfVectorizer(tokenizer=comma_tokenizer)
 train_data = vectorizer.fit_transform(train_words)
-test_data = vectorizer.fit_transform(test_words)
+test_data = vectorizer.transform(test_words)
 
 # 分类
 clf = MultinomialNB(alpha=0.01)
