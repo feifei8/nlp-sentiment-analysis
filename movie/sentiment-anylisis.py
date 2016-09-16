@@ -11,6 +11,7 @@ dataset_dir_name = os.getcwd() + '/txt_sentoken'
 
 # load data,and split into training/test set
 movie_reviews = load_files(dataset_dir_name)
+print movie_reviews.target
 
 # split
 doc_terms_train, doc_terms_test, doc_class_train, doc_class_test = train_test_split(
