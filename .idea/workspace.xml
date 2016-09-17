@@ -16,8 +16,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/commentNLP$sklearn_sensitive_anylisis.coverage" NAME="sklearn-sensitive-anylisis Coverage Results" MODIFIED="1474124670825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/commentNLP$sklearn_sensitive_anylisis.coverage" NAME="sklearn-sensitive-anylisis Coverage Results" MODIFIED="1474124711787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/commentNLP$sentiment_anylisis.coverage" NAME="sentiment-anylisis Coverage Results" MODIFIED="1473927228199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/movie" />
+    <SUITE FILE_PATH="coverage/commentNLP$sklearn_topic_cluster.coverage" NAME="sklearn-topic-cluster Coverage Results" MODIFIED="1474125406678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/commentNLP$sklearn_sentiment_anylisis_bak__1_.coverage" NAME="sklearn-sentiment-anylisis-bak (1) Coverage Results" MODIFIED="1473993772583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/commentNLP$sklearn_sentiment_anylisis_bak.coverage" NAME="sklearn-sentiment-anylisis-bak Coverage Results" MODIFIED="1473921664953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -30,13 +31,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sklearn-sentiment-anylisis.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sklearn-sentiment-anylisis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sklearn-sentiment-anylisis.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sklearn-topic-cluster.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sklearn-topic-cluster.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
-              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
               <folding>
-                <element signature="e#17#36#0" expanded="true" />
+                <element signature="e#43#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,9 +73,9 @@
         <option value="$PROJECT_DIR$/sklearn-sensitive-anylisis.py" />
         <option value="$PROJECT_DIR$/movie/sentiment-anylisis.py" />
         <option value="$PROJECT_DIR$/sklearn-sentiment-anylisis-bak.py" />
-        <option value="$PROJECT_DIR$/sklearn-topic-cluster.py" />
         <option value="$PROJECT_DIR$/stopwords.txt" />
         <option value="$PROJECT_DIR$/sklearn-sentiment-anylisis.py" />
+        <option value="$PROJECT_DIR$/sklearn-topic-cluster.py" />
       </list>
     </option>
   </component>
@@ -163,7 +174,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.sklearn-sensitive-anylisis">
+  <component name="RunManager" selected="Python.sklearn-topic-cluster">
     <configuration default="false" name="sklearn-sensitive-anylisis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -232,6 +243,24 @@
       <module name="nlp" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sklearn-sentiment-anylisis-bak.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="sklearn-topic-cluster" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nlp" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sklearn-topic-cluster.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -444,18 +473,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.sklearn-sensitive-anylisis" />
       <item index="1" class="java.lang.String" itemvalue="Python.sklearn-sentiment-anylisis-bak" />
       <item index="2" class="java.lang.String" itemvalue="Python.sentiment-anylisis" />
       <item index="3" class="java.lang.String" itemvalue="Python.sklearn-sentiment-anylisis-bak (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.sklearn-topic-cluster" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.sklearn-sensitive-anylisis" />
-        <item index="1" class="java.lang.String" itemvalue="Python.sklearn-sentiment-anylisis-bak (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.sentiment-anylisis" />
-        <item index="3" class="java.lang.String" itemvalue="Python.sklearn-sentiment-anylisis-bak" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.sklearn-topic-cluster" />
+        <item index="1" class="java.lang.String" itemvalue="Python.sklearn-sensitive-anylisis" />
+        <item index="2" class="java.lang.String" itemvalue="Python.sklearn-sentiment-anylisis-bak (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.sentiment-anylisis" />
+        <item index="4" class="java.lang.String" itemvalue="Python.sklearn-sentiment-anylisis-bak" />
       </list>
     </recent_temporary>
   </component>
@@ -479,13 +510,13 @@
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23014587" sideWeight="0.4848485" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23014587" sideWeight="0.4848485" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27737227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3109489" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22366288" sideWeight="0.5151515" order="2" side_tool="true" content_ui="tabs" />
@@ -522,7 +553,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -532,7 +563,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -542,7 +573,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -552,7 +583,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -562,7 +593,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -572,7 +603,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -582,7 +613,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -592,7 +623,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -648,7 +679,7 @@
         <state relative-caret-position="95">
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -671,13 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="1791" column="4" selection-start-line="1791" selection-start-column="4" selection-end-line="1791" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sparkmllib-sentiment-anylisis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -705,20 +729,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sklearn-topic-cluster.py">
+    <entry file="file://$PROJECT_DIR$/sparkmllib-sentiment-anylisis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#18#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sklearn-sentiment-anylisis.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sklearn-topic-cluster.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
-          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
           <folding>
-            <element signature="e#17#36#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
