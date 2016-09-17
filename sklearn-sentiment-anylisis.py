@@ -5,8 +5,11 @@ import jieba
 import numpy
 from sklearn.cross_validation import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
+from sklearn import svm
+from sklearn.svm import LinearSVC
 
 if __name__ == "__main__":
     # 加载数据
@@ -30,7 +33,10 @@ if __name__ == "__main__":
     test_data = vectorizer.transform(test_words)
 
     # 分类
+    # clf = LogisticRegression()
     clf = MultinomialNB(alpha=0.01)
+    # clf = svm.SVC()
+    # clf = LinearSVC()
     clf.fit(train_data, numpy.asarray(train_tags))
 
     # 验证

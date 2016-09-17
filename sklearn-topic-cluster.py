@@ -1,12 +1,9 @@
 # coding: utf-8
 
 import pandas as pd
-import jieba
-import numpy
+import re
 from sklearn.cross_validation import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn import metrics
+from sklearn.feature_extraction.text import HashingVectorizer
 
 # 加载数据
 path = u'spide/output/疯狂动物城 Zootopia.txt'
