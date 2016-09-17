@@ -4,7 +4,7 @@ __author__ = 'zhourunlai'
 import pandas as pd
 import re
 from sklearn.cross_validation import train_test_split
-from sklearn.feature_extraction.text import HashingVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 
 if __name__ == "__main__":
@@ -24,11 +24,23 @@ if __name__ == "__main__":
 
     # 分词
     comma_tokenizer = lambda x: re.split(r'\s+|[,;.-]\s*', x)
-    vectorizer = HashingVectorizer(tokenizer=comma_tokenizer)
+    vectorizer = TfidfVectorizer(tokenizer=comma_tokenizer)
     train_data = vectorizer.fit_transform(train_words)
     test_data = vectorizer.transform(test_words)
 
     # 聚类
-    clf = KMeans(n_clusters=4)
+    clf = KMeans(n_clusters=20)
     clf.fit(train_data)
-    print clf.cluster_centers_
+
+    # 中心点
+    print(clf.cluster_centers_)
+
+    # 每个样本所属的簇
+    print(clf.labels_)
+    i = 1
+    while i <= len(clf.labels_):
+        print i, clf.labels_[i - 1]
+        i = i + 1
+
+    # 用来评估簇的个数是否合适，距离越小说明簇分的越好，选取临界点的簇个数
+    print(clf.inertia_)
