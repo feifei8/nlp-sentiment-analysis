@@ -6,6 +6,8 @@ import re
 from sklearn.cross_validation import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
+from sklearn.cluster import DBSCAN
+from sklearn.cluster import ward_tree
 
 if __name__ == "__main__":
     # 加载数据
@@ -22,7 +24,7 @@ if __name__ == "__main__":
     train_words, test_words = train_test_split(words, test_size=0.3)
     print "训练集数目：%d; 测试集数目：%d" % (len(train_words), len(test_words))
 
-    # 分词
+    # 分句
     comma_tokenizer = lambda x: re.split(r'\s+|[,;.-]\s*', x)
     vectorizer = TfidfVectorizer(tokenizer=comma_tokenizer)
     train_data = vectorizer.fit_transform(train_words)
@@ -30,17 +32,19 @@ if __name__ == "__main__":
 
     # 聚类
     clf = KMeans(n_clusters=20)
+    # clf = DBSCAN(eps=0.5, min_samples=5, random_state=None)
     clf.fit(train_data)
+    # clf = ward_tree(train_data, connectivity=None, n_components=None, n_clusters=20, return_distance=False)
 
     # 中心点
     print(clf.cluster_centers_)
 
     # 每个样本所属的簇
     print(clf.labels_)
-    i = 1
-    while i <= len(clf.labels_):
-        print i, clf.labels_[i - 1]
-        i = i + 1
+    # i = 1
+    # while i <= len(clf.labels_):
+    #     print i, clf.labels_[i - 1]
+    #     i += 1
 
     # 用来评估簇的个数是否合适，距离越小说明簇分的越好，选取临界点的簇个数
     print(clf.inertia_)
