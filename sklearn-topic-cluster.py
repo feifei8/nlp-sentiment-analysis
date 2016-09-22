@@ -49,7 +49,7 @@ if __name__ == "__main__":
     #     i += 1
 
     # 用来评估簇的个数是否合适，距离越小说明簇分的越好，选取临界点的簇个数
-    print(clf.inertia_)
+    # print(clf.inertia_)
 
     # i = 1
     # while i <= len(clf.row_labels_):
