@@ -3,6 +3,7 @@
 import jieba
 from pyspark import SparkConf, SparkContext
 from pyspark.mllib.feature import HashingTF, IDF
+from pyspark.mllib.regression import LabeledPoint
 from pyspark.mllib.classification import NaiveBayes, NaiveBayesModel
 
 try:
@@ -24,25 +25,26 @@ if __name__ == "__main__":
     sc = SparkContext(conf=conf)
 
     # 导入文件
-    originData = sc.textFile('hdfs:///tmp/output.txt')
-    print originData.count()
+    # originData = sc.textFile('hdfs:///tmp/output.txt')
+    originData = sc.textFile('/Users/aaron/Documents/work_ml/commentNLP/spide/output/谍影重重5 Jason Bourne.txt')
+    # print originData.count()
 
     # 数据预处理
     #     originDistinctData = originData.distinct()
     rateDocument = originData.map(lambda line: line.split('\t')).filter(lambda line: len(line) >= 2)
-    print rateDocument.count()
+    # print rateDocument.count()
 
     # 统计打分情况
     fiveRateDocument = rateDocument.filter(lambda line: int(line[0]) == 5)
-    print fiveRateDocument.count()
+    # print fiveRateDocument.count()
     fourRateDocument = rateDocument.filter(lambda line: int(line[0]) == 4)
-    print fourRateDocument.count()
+    # print fourRateDocument.count()
     threeRateDocument = rateDocument.filter(lambda line: int(line[0]) == 3)
-    print threeRateDocument.count()
+    # print threeRateDocument.count()
     twoRateDocument = rateDocument.filter(lambda line: int(line[0]) == 2)
-    print twoRateDocument.count()
+    # print twoRateDocument.count()
     oneRateDocument = rateDocument.filter(lambda line: int(line[0]) == 1)
-    print oneRateDocument.count()
+    # print oneRateDocument.count()
 
     # 生成训练数据
     negRateDocument = oneRateDocument.union(twoRateDocument).union(threeRateDocument)
@@ -50,7 +52,7 @@ if __name__ == "__main__":
     posRateDocument = sc.parallelize(fiveRateDocument.take(negRateDocument.count())).repartition(1)
     allRateDocument = negRateDocument.union(posRateDocument)
     allRateDocument.repartition(1)
-    rate = allRateDocument.map(lambda s: ReduceRate(s[0]))
+    rate = allRateDocument.map(lambda s: s[0])
     document = allRateDocument.map(lambda s: s[1])
 
     # 分词
