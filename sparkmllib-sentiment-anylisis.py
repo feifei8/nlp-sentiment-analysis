@@ -6,17 +6,7 @@ from pyspark.mllib.feature import HashingTF, IDF
 from pyspark.mllib.regression import LabeledPoint
 from pyspark.mllib.classification import NaiveBayes, NaiveBayesModel
 
-try:
-    sc.stop()
-except:
-    pass
-
 APP_NAME = "My Spark Application"
-
-
-def main(sc):
-    pass
-
 
 if __name__ == "__main__":
     # Spark配置
@@ -26,7 +16,7 @@ if __name__ == "__main__":
 
     # 导入文件
     # originData = sc.textFile('hdfs:///tmp/output.txt')
-    originData = sc.textFile('/Users/aaron/Documents/work_ml/commentNLP/spide/output/谍影重重5 Jason Bourne.txt')
+    originData = sc.textFile('/Users/aaron/Documents/work_ml/commentNLP/spide/output/疯狂动物城 Zootopia.txt')
     # print originData.count()
 
     # 数据预处理
@@ -78,5 +68,3 @@ if __name__ == "__main__":
     accuracy = 1.0 * predictionAndLabel.filter(lambda x: 1.0 if x[0] == x[1] else 0.0).count() / test.count()
 
     print accuracy
-
-    main(sc)
